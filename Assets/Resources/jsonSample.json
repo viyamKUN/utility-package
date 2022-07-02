@@ -1,0 +1,19 @@
+{
+    "array": [
+        {
+            "uid": 0,
+            "name": "apple",
+            "description": "It's red."
+        },
+        {
+            "uid": 1,
+            "name": "banana",
+            "description": "It's yellow."
+        },
+        {
+            "uid": 2,
+            "name": "grape",
+            "description": "It's purple."
+        }
+    ]
+}

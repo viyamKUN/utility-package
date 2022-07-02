@@ -2,7 +2,7 @@ namespace Yurei.Sample
 {
     using Utility.DataLoaders;
 
-    public class Item
+    public class CsvItem
     {
         private int _uid;
         [CSVProperty("uid")]
@@ -29,6 +29,22 @@ namespace Yurei.Sample
         public override string ToString()
         {
             return $"[{_uid}] {_name}: {_description}";
+        }
+    }
+
+    [System.Serializable]
+    public class JsonItem
+    {
+        [UnityEngine.SerializeField]
+        private int uid;
+        [UnityEngine.SerializeField]
+        private string name;
+        [UnityEngine.SerializeField]
+        private string description;
+
+        public override string ToString()
+        {
+            return $"[{uid}] {name}: {description}";
         }
     }
 }
