@@ -1,21 +1,26 @@
 namespace Yurei.Sample
 {
+    using Utility.DataLoaders;
+
     public class Item
     {
-        private string _uid;
-        public string uid
+        private int _uid;
+        [CSVProperty("uid")]
+        public int Uid
         {
             get => _uid;
             set => _uid = value;
         }
         private string _name;
-        public string name
+        [CSVProperty("name")]
+        public string Name
         {
             get => _name;
             set => _name = value;
         }
         private string _description;
-        public string description
+        [CSVProperty("description")]
+        public string Description
         {
             get => _description;
             set => _description = value;

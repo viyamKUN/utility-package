@@ -24,3 +24,7 @@
 * 게임 로컬 저장 시스템으로 로드, 생성, 저장, 삭제 제공함.
 
 ## Data Loader
+
+### CSVReader
+
+* CSVProperty 어트리뷰트에 column이름을 지정하여 CSV를 원하는 타입으로 읽어옴.

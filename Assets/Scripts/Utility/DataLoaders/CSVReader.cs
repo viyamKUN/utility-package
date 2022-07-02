@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 namespace Yurei.Utility.DataLoaders
@@ -22,10 +24,22 @@ namespace Yurei.Utility.DataLoaders
                 if (values.Length == 0 || values[0] == "") continue;
 
                 var entry = System.Activator.CreateInstance<T>();
+                var properties = entry.GetType().GetProperties();
                 for (int j = 0; j < header.Length; j++)
                 {
-                    var property = entry.GetType().GetProperty(header[j]);
-                    var value = values[j];
+                    var property = properties.First(x =>
+                    {
+                        var csvProp = x.GetCustomAttribute(typeof(CSVPropertyAttribute)) as CSVPropertyAttribute;
+                        return csvProp.PropertyName.Equals(header[j]);
+                    });
+
+                    // Try parse
+                    object value = values[j];
+                    if (int.TryParse(values[j], out int intValue))
+                        value = intValue;
+                    else if (float.TryParse(values[j], out float floatValue))
+                        value = floatValue;
+
                     property?.SetValue(entry, value);
                 }
                 list.Add(entry);
